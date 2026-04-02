@@ -1,52 +1,76 @@
 #include <stdio.h>
 
-int main() {
+// ======================
+// TORRE (recursivo)
+// ======================
+void torre(int casas) {
+    if (casas == 0) return;
+
+    printf("Direita\n");
+    torre(casas - 1);
+}
+
+// ======================
+// RAINHA (recursivo)
+// ======================
+void rainha(int casas) {
+    if (casas == 0) return;
+
+    printf("Esquerda\n");
+    rainha(casas - 1);
+}
+
+// ======================
+// BISPO (recursivo + loop)
+// ======================
+void bispo(int casas) {
+    if (casas == 0) return;
 
     int i;
+    for (i = 0; i < 1; i++) {
+        printf("Cima Direita\n");
+    }
+
+    bispo(casas - 1);
+}
+
+int main() {
 
     // ======================
     // TORRE
     // ======================
     printf("Movimento da Torre:\n");
-    for (i = 0; i < 5; i++) {
-        printf("Direita\n");
-    }
+    torre(5);
 
     // ======================
     // BISPO
     // ======================
     printf("\nMovimento do Bispo:\n");
-    i = 0;
-    while (i < 5) {
-        printf("Cima Direita\n");
-        i++;
-    }
+    bispo(5);
 
     // ======================
     // RAINHA
     // ======================
     printf("\nMovimento da Rainha:\n");
-    i = 0;
-    do {
-        printf("Esquerda\n");
-        i++;
-    } while (i < 8);
+    rainha(8);
 
     // ======================
-    // CAVALO (loops aninhados)
+    // CAVALO (loop complexo)
     // ======================
     printf("\nMovimento do Cavalo:\n");
 
-    int j;
+    int i, j;
 
-    for (i = 0; i < 2; i++) { // duas casas para baixo
-        printf("Baixo\n");
-    }
+    for (i = 0; i < 3; i++) {
 
-    j = 0;
-    while (j < 1) { // uma casa para esquerda
-        printf("Esquerda\n");
-        j++;
+        if (i < 2) {
+            printf("Cima\n");
+            continue;
+        }
+
+        for (j = 0; j < 1; j++) {
+            printf("Direita\n");
+        }
     }
 
     return 0;
